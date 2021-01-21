@@ -1,0 +1,51 @@
+body{
+    background: url('../img/body-background.png');
+}
+h1{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.455);
+}
+p{
+    text-indent:22px;
+}
+figure#foto1{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width:60%;
+    min-width:350px;
+}
+figure#foto1 img{
+    width:100%;
+}
+figure#foto1 figcaption,figure#foto2 figcaption{
+    background-color: darkgray;
+    padding-top:8px;
+    color: rgba(255, 255, 255, 0.83);
+    font-size:17px;
+    font-weight: 600;
+    text-shadow:1px 1px 2px black;
+    text-align: center;
+}
+figure#foto2{
+    float: right;
+    margin-left:22px;
+}
+@media (max-width:640px){
+    figure#foto2{
+        float: none;
+        width:60%;
+        min-width:330px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom:22px;
+    }
+    figure#foto2 img{
+        width:100%;
+    }
+}
+@media (max-width:767px){
+    #m{
+        position: absolute;
+        top:0px;
+    }
+}

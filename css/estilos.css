@@ -1,0 +1,74 @@
+.center{
+    margin-left:auto;
+    margin-right: auto;
+}
+header{
+    height:100vh;
+    background: url('../img/destaque-home-2.png') no-repeat;
+    background-size:100% 100%;
+    position: relative;
+}
+.navbar-default{
+    background: transparent;
+    border: none;
+}
+#menu a{
+    font-weight: 510;
+    color: rgb(22, 21, 20);
+    font-size:18px;
+    text-shadow: 1px 1px 2px white;
+    transition: all .3s linear;
+    outline: none;
+}
+#menu a:hover{
+    background-color: rgba(0, 0, 0, 0.435);
+    color: white;
+    border-bottom:3px solid #cf3;
+    text-shadow:none;
+}
+#m{
+    color: rgb(22, 21, 21);
+    font-size:43px;
+    font-family:cursive;
+    position: absolute;
+    bottom:-82vh;
+    left: 0px;
+    font-weight:700;
+    text-shadow: 1px 1px 1px white;
+}
+#m:first-letter{
+    font-size:60px;
+    color: rgba(0, 128, 73, 0.796);
+    text-decoration: underline;
+}
+.userInfo li:nth-child(2){
+    font-size:18px;
+    margin-top:12px;
+    margin-left:5px;
+    color: white;
+    text-shadow:1px 1px 1px black;
+}
+.userInfo img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+}
+#menu .atual{
+    background-color:rgba(255, 255, 255, 0.687);
+    color: rgb(216, 26, 26);
+    border-bottom:3px solid rgb(71, 123, 255); 
+    text-shadow:none; 
+}
+#menu .atual:hover{
+    background-color:rgba(255, 255, 255, 0.687);
+    color: rgb(216, 26, 26);
+    border-bottom:3px solid rgb(71, 123, 255); 
+    text-shadow:none; 
+}
+@media (max-width:767px){
+    #m{
+        font-size:27px;
+        bottom:0vh;
+        width:270px;
+    }
+}

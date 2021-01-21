@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        fieldset{
+            max-width:500px;
+        }
+        @media (min-width:990px){
+            fieldset{
+                max-width:700px;
+            } 
+        }
+        #tudo{
+            max-width:770px;
+            margin-top:0vh;
+            text-align:center;
+            padding:22px;
+        }
+        form.tudo{
+            text-align: left;
+        }
+        .form-group{
+            width:85%;
+        }
+        .form-control{
+            border-radius:0px;
+            background-color: rgba(255, 255, 255, 0.911);
+            box-shadow: none !important;
+        }
+        .btn{
+            margin-right:20%;
+            width:60%;
+        }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    
+    <div id="tudo" class="center">
+
+        <form class="row tudo center" id="form" >
+            <br/>
+            <fieldset class="center">
+                <div class="col-xs-12 col-md-6">
+                    <legend class="text-white">Dados Pessoais</legend>   
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" name="nomee" id="nome" placeholder="Digite aqui seu nome" class="form-control"></input> <br/>
+                    
+                    <label for="dnasc">Data de Nascimento</label>	
+                    <input type="date" name="nasc" id="dnasc" class="form-control"></input> <br/>
+                                
+                    <label for="sexo">Género</label>
+                    <select name="gen" id="sexo" class="form-control">
+                        <Option value="M">Masculino</Option>
+                        <option value="F"> Feminino</option>
+                    </select><br/>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <legend class="text-white">Dados de Acesso</legend>   
+                    <label for="tel">Número de telefone</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">(+244)</span>
+                        <input type="number" name="numm" id="tel" placeholder="Qual é o seu número" class="form-control"></input> <br/>
+                    </div>
+                    <br>
+                    <label for="senha">Palavra-Passe</label>
+                    <input type="password" name="passe" id="senha" placeholder="Mínimo -> 6 digitos" class="form-control"></input> <br/>
+
+                    <label for="email">Email / C. Electrónico</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" name="CE" id="email" placeholder="exemplo@gmail.com" class="form-control"></input> <br/>
+                    </div>
+                    <br>
+                    <input type="submit" value="Criar Conta" class="btn btn-primary" id="btnCad" style="float:right;"/>
+                </div>			
+            </fieldset>	
+        </form>
+    </div>
+
+    <script src="bootstrap/js/jquery.js"></script>
+    <script>
+
+        $(function(){
+
+            $('#form').submit(function(e){
+                e.preventDefault();
+
+                if($('#nome').val().trim()=="" || $('#tel').val().trim()=="" || $('#senha').val()=="" || $('#email').val().trim()==""){
+                    window.alert("Nenhum campo pode estar vazio");
+                }else if($('#nome').val().trim().length < 10){
+                    window.alert('O seu nome eh curto demais!\n Insira o 1º e o último nome');
+                }else if(!$('#nome').val().trim().includes(" ")){
+                    window.alert('Digite dois dos teus nomes no minimo');
+                }else if($('#nome').val().trim().length >= 80){
+                    window.alert('O seu nome eh muito longo');
+                }else if(!$('#nome').val().trim().includes(" ")){
+                    window.alert('Insira pelo menos 2 dos teus nomes.\n O 1º e o último nome');
+                }else if($('#tel').val().trim().length < 9){
+                    window.alert('O número não está completo! \n Insira pelo menos 9 digitos.');
+                }else if(!$('#email').val().trim().includes("@gmail.com")){
+                    window.alert('O email digitado não é válido!')
+                }else{  //se tudo correr bem, entao enviar dados via ajax
+                    $.ajax({
+                    url:'add_cliente.php',
+                    type:'get',
+                    dataType:'html',
+                    data:{
+                        'nome':$('#nome').val(),
+                        'data_nasc':$('#dnasc').val(),
+                        'genero':$('#sexo').val(),
+                        'num_tel':$('#tel').val(),
+                        'passe':$('#senha').val(),
+                        'email':$('#email').val()
+                    }
+                }).done(function(resposta){
+                    if(resposta == "erro"){
+                        window.alert("O usuario que está tentando cadastrar já existe!\n Escolha um número de telefone diferente.")
+                    }else{
+                        window.location.href = 'home-page.php';
+                    }
+                });
+            }
+                
+            });
+
+        });
+
+    </script>
+</body>
+</html>

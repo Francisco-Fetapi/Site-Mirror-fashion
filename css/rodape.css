@@ -1,0 +1,12 @@
+.rodape{
+    clear: both;
+    width:100%;
+    padding-left:7px;
+    padding-right:7px;
+    padding-top:32px;
+    padding-bottom:32px;
+    background: url('../img/fundo-rodape.png');
+}
+.rodape ul{
+    margin-top:21px;
+}
